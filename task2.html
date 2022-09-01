@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body bgcolor="#454444">
+<script>
+
+  function isAnagram (word1, word2) {
+    let flag;
+    for (let symbol1 of word1) {
+      flag = false;
+      if (symbol1 === " ") return "Не використовуйте пробіли!";
+      for (let symbol2 of word2) {
+        if (symbol2 === " ") return "Не використовуйте пробіли!";
+        else if (symbol2 === symbol1) {
+          flag = true;
+        }
+      }
+      if (!flag) {
+        return `Слова "${word1}" та "${word2}" не є анаграмою`;
+      }
+    }
+    return `Слова "${word1}" та "${word2}" - анаграма`;
+  }
+
+  let word1= prompt("Введіть перше слово");
+  let word2= prompt("Введіть друге слово");
+
+  alert(isAnagram(word1, word2));
+
+</script>
+</body>
+</html>

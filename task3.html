@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body bgcolor="#454444">
+<script>
+
+    let questions = [{
+        id: 0,
+        question: "Яка з поданих автомобільних марок не є італійською?",
+        answers: ["Alfa Romeo", "Lancia", "Fiat", "Renault"],
+        correctAnswer: "Renault",
+        prize: "$500"
+    },
+        {
+            id: 1,
+            question: "Яка з поданих автомобільних марок не входить до концерну VAG?",
+            answers: ["Audi", "Lamborghini", "Ducati", "Opel"],
+            correctAnswer: "Opel",
+            prize: "$1.000",
+            safe: false
+        },
+        {
+            id: 2,
+            question: "Який з автомобілей є найшвидшим серійним авто у світі?",
+            answers: ["SSC Tuatara", "Koenigsegg Jesko Absolut", "Bugatti Chiron Super Sport", "Hennessey Venom F5"],
+            correctAnswer: "Koenigsegg Jesko Absolut",
+            prize: "$2.000",
+            safe: false
+        },
+        {
+            id: 3,
+            question: "Скільки дверей зазвичай мають автомобілі в кузові купе?",
+            answers: ["2", "3", "4", "5"],
+            correctAnswer: "2",
+            prize: "$3.000",
+            safe: false
+        },
+        {
+            id: 4,  // Незгорана сума
+            question: "Яка з автомобільних компаній є лідером з продаж за 2022 рік?",
+            answers: ["Tesla", "BMW", "Toyota", "Mercedes Benz"],
+            correctAnswer: "Toyota",
+            prize: "$5.000",
+            safe: true
+        },
+        {
+            id: 5,
+            question: "В якому році було створено перший автомобіль?",
+            answers: ["1985", "1885", "1785", "1685"],
+            correctAnswer: "1885",
+            prize: "$8.000",
+            safe: false
+        },
+        {
+            id: 6,
+            question: "Хто створив перший автомобіль?",
+            answers: ["Енцо Феррарі", "Генрі Форд", "Керол Шелбі", "Карл Бенц"],
+            correctAnswer: "Карл Бенц",
+            prize: "$10.000",
+            safe: false
+        },
+        {
+            id: 7,
+            question: "Найбільша швидкість, досягнута на автомобілі?",
+            answers: ["893 км/год", "1108 км/год", "1228 км/год", "1347 км/год"],
+            correctAnswer: "1228 км/год",
+            prize: "$13.000",
+            safe: false
+        },
+        {
+            id: 8,
+            question: "З якою швидкістю їхав переможець перших перегонів?",
+            answers: ["менше 30 км/год", "30-40 км/год", "40-50 км/год", "більше 50 км/год"],
+            correctAnswer: "менше 30 км/год",
+            prize: "$15.000",
+            safe: false
+        },
+        {
+            id: 9,  // Незгорана сума
+            question: "Яка компанія встановила перше бортове радіо на автомобіль?",
+            answers: ["Motorola", "Ideal-Werke", "Bosch", "Cadillac"],
+            correctAnswer: "Motorola",
+            prize: "$25.000",
+            safe: true
+        },
+        {
+            id: 10,
+            question: "Перший у світі автомобіль конвеєрного виробництва",
+            answers: ["Ford Model T", "Benz Patent-Motorwagen", "Volvo 850", "Mercedes-Benz 260D"],
+            correctAnswer: "Ford Model T",
+            prize: "$50.000",
+            safe: false
+        },
+        {
+            id: 11,
+            question: "Де відбулася перша автомобільна аварія?",
+            answers: ["Німеччина", "США", "Швеція", "Велика Британія"],
+            correctAnswer: "США",
+            prize: "$100.000",
+            safe: false
+        },
+        {
+            id: 12,
+            question: "Яка довжина найдовшого автомобіля у світі?",
+            answers: ["15 метрів", "26 метрів", "30 метрів", "35 метрів"],
+            correctAnswer: "30 метрів",
+            prize: "$250.000",
+            safe: false
+        },
+        {
+            id: 13,
+            question: "Хто заснував компанію Tesla Motors?",
+            answers: ["Нікола Тесла", "Ілон Маск", "Ларі Пейдж і Сергій Брін", "Мартін Ебехард і Марк Тарпеннінг"],
+            correctAnswer: "Мартін Ебехард і Марк Тарпеннінг",
+            prize: "$500.000",
+            safe: false
+        },
+        {
+            id: 14,
+            question: "В якій країні штраф на дорозі залежить від доходів порушника?",
+            answers: ["США", "Германия", "Швейцария", "Финляндия"],
+            correctAnswer: "Финляндия",
+            prize: "$1.000.000",
+            safe: false
+        }]
+
+    function startGame(questions) {
+        let quest;
+        let flag;
+        let isSafe;
+        let safePrize;
+        for (let i = 0; i < questions.length; i++) {
+            isSafe = questions[i].safe;
+            quest = prompt (
+                questions[i].question + '\n' +
+                '1) ' + questions[i].answers[0] + '\n' +
+                '2) ' + questions[i].answers[1] + '\n' +
+                '3) ' + questions[i].answers[2] + '\n' +
+                '4) ' + questions[i].answers[3] );
+
+            if (questions[i].answers[quest - 1] !== questions[i].correctAnswer) {
+                if (safePrize) {
+                    alert(`Нажаль, відповідь невірна. Ваш виграш - ${safePrize}!`);
+                } else {
+                    alert("Нажаль, відповідь невірна. Ви програли!");
+                }
+                break;
+            } else if (questions[i].answers[quest - 1] === questions[i].correctAnswer) {
+                if (isSafe) {
+                    safePrize = questions[i].prize;
+                }
+                if (i === questions.length-1) {
+                    alert(`Вітаємо, Ви виграли головний приз - ${questions[i].prize}!!!`);
+                    break;
+                }
+                flag = confirm(`На даний момент сума Вашого виграшу - ${questions[i].prize}. Чи бажаєте продовжити гру?`);
+                if (!flag) {
+                    alert(`Вітаємо, Ви виграли ${questions[i].prize}! Дякуємо за участь.`);
+                    break;
+                }
+            }
+        }
+    }
+
+    startGame(questions);
+
+
+</script>
+</body>
+</html>

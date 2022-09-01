@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body bgcolor="#454444">
+    <script>
+
+        function isPalindrome (arr) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === " " || arr[arr.length - 1 - i] === " ") {
+                    return "Введіть одне слово (не використовуйте пробіли)!";
+                } else if (arr[i] !== arr[arr.length - 1 - i]) {
+                    return `Слово "${arr}" не є паліндромом`;
+                }
+            }
+            return `Слово "${arr}" - паліндром`;
+        }
+
+        let word = prompt("Введіть слово");
+
+        alert(isPalindrome(word));
+
+    </script>
+</body>
+</html>
